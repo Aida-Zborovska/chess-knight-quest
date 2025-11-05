@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Knight quest</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script type="module" src="./js/main.js"></script>
+  </head>
+  <body>
+    <h1></h1>
+    <p></p>
+    <form class="js-generate-form">
+      <p class="generate-descr">Оберіть розмір дошки</p>
+      <label for="width"
+        >Оберіть кількість клітинок по горизонталі, від 5 до 16</label
+      >
+      <input
+        type="number"
+        name="width"
+        id="width-in"
+        required
+        min="5"
+        max="16"
+      />
+      <label for="height"
+        >Оберіть кількість клітинок по вертикалі, від 5 до 16</label
+      >
+      <input
+        type="number"
+        name="height"
+        id="height-in"
+        required
+        min="5"
+        max="16"
+      />
+      <button type="submit" class="generate-btn">Згенерувати дошку</button>
+    </form>
+  </body>
+</html>
