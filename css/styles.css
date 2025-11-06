@@ -1,3 +1,35 @@
+body {
+  background-color: darkslategray;
+}
+
 .hidden {
   display: none;
+}
+.js-chessboard {
+  display: grid;
+}
+.cell {
+  width: 100%;
+  height: 100%;
+}
+
+.black {
+  background-color: peru;
+}
+
+.white {
+  background-color: bisque;
+}
+
+.possible-move {
+  background-color: indianred;
+}
+.visited {
+  background-color: darkgrey;
+}
+.active-cell {
+  border: 3px solid #000;
+}
+.start-cell {
+  background-color: aquamarine;
 }
