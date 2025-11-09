@@ -48,8 +48,9 @@ function generateBoard(x, y) {
 }
 
 function markStartCell(event) {
-  const startCell = event.target.closest("div");
+  const startCell = event.target.closest(".cell");
   startCell.classList.add("start-cell", "active-cell");
+  startCell.innerHTML = `<img src="./images/knight.png" class="knight" />`;
   board.removeEventListener("click", markStartCell);
   markAvailableCells(startCell);
 }
@@ -85,21 +86,28 @@ function getAvailableCellsCoords(moves, x, y) {
 }
 
 function handleNextMove(event) {
-  const currentCell = event.target.closest("div.possible-move");
+  const currentCell = event.target.closest(".possible-move");
   if (!currentCell) {
     return;
   }
   switchActiveToVisited();
   currentCell.classList.add("active-cell");
+  currentCell.innerHTML = `<img src="./images/knight.png" class="knight" />`;
+
   clearOldAvailableMoves();
   markAvailableCells(currentCell, knightMoves);
-  handleGameEnd();
+  checkGameEnd() && handleGameEnd();
 }
 
 function switchActiveToVisited() {
   const oldActiveCell = board.querySelector(".active-cell");
   oldActiveCell.classList.remove("active-cell");
   oldActiveCell.classList.add("visited");
+  if (oldActiveCell.classList.contains("start-cell")) {
+    oldActiveCell.innerHTML = `<img src="./images/castle.png" class="castle" />`;
+  } else {
+    oldActiveCell.innerHTML = `<img src="./images/horseshoe.png" class="horseshoe" />`;
+  }
 }
 
 function clearOldAvailableMoves() {
@@ -107,11 +115,12 @@ function clearOldAvailableMoves() {
   oldPossibleCells.forEach((cell) => cell.classList.remove("possible-move"));
 }
 
-function handleGameEnd() {
+function checkGameEnd() {
   const possibleCell = board.querySelector(".possible-move");
-  if (possibleCell) {
-    return;
-  }
+  return !possibleCell;
+}
+
+function handleGameEnd() {
   const notVisited = board.querySelectorAll(":not(.visited)");
   notVisited.length === 1 ? console.log("Ви виграли") : console.log("лузер");
 }
