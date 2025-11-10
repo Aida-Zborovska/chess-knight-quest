@@ -129,7 +129,7 @@ function checkGameEnd() {
 }
 
 function handleGameEnd() {
-  const notVisited = board.querySelectorAll(":not(.visited)");
+  const notVisited = board.querySelectorAll(".cell:not(.visited)");
   messageArea.btn.style.marginRight = "auto";
   if (notVisited.length === 1) {
     messageArea.title.textContent = "Вітаємо! Ви, як-то кажуть, на коні!";
