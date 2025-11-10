@@ -145,5 +145,6 @@ function handleRestart() {
   board.classList.add("hidden");
   messageArea.btn.style.marginRight = "50px";
   board.innerHTML = "";
+  messageArea.title.textContent = "І-го-го! тидик-тидик-тидик...";
   board.addEventListener("click", markStartCell);
 }
