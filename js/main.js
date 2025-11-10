@@ -12,20 +12,28 @@ const knightMoves = [
 
 const generateForm = document.querySelector(".js-generate-form");
 const board = document.querySelector(".js-chessboard");
+const messageArea = {
+  wrap: document.querySelector(".game-message-wrap"),
+  title: document.querySelector(".game-message-title"),
+  btn: document.querySelector(".game-message-btn"),
+};
 
 generateForm.addEventListener("submit", handleFormSubmit);
 board.addEventListener("click", markStartCell);
 board.addEventListener("click", handleNextMove);
+messageArea.btn.addEventListener("click", handleRestart);
 
 function handleFormSubmit(event) {
   event.preventDefault();
   generateForm.classList.add("hidden");
   board.classList.remove("hidden");
+  messageArea.wrap.classList.remove("hidden");
   const x = Number(generateForm.elements.width.value);
   const y = Number(generateForm.elements.height.value);
   boardWidth = x;
   boardHeight = y;
   generateBoard(x, y);
+  generateForm.reset();
 }
 
 function generateBoard(x, y) {
@@ -122,5 +130,20 @@ function checkGameEnd() {
 
 function handleGameEnd() {
   const notVisited = board.querySelectorAll(":not(.visited)");
-  notVisited.length === 1 ? console.log("Ви виграли") : console.log("лузер");
+  messageArea.btn.style.marginRight = "auto";
+  if (notVisited.length === 1) {
+    messageArea.title.textContent = "Вітаємо! Ви, як-то кажуть, на коні!";
+  } else {
+    messageArea.title.textContent =
+      "Нехай проблеми та незгоди не роблять вам в житті погоди!";
+  }
+}
+
+function handleRestart() {
+  messageArea.wrap.classList.add("hidden");
+  generateForm.classList.remove("hidden");
+  board.classList.add("hidden");
+  messageArea.btn.style.marginRight = "50px";
+  board.innerHTML = "";
+  board.addEventListener("click", markStartCell);
 }

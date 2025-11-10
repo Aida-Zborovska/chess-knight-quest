@@ -2,22 +2,104 @@
   box-sizing: border-box;
 }
 body {
-  background-color: darkslategray;
+  /* background-color: darkslategray; */
+  background-image: linear-gradient(rgba(46, 47, 66, 0.5)),
+    url(../images/background.jpg);
+  background-size: cover;
+  font-family: "Lora", serif;
 }
 button {
   cursor: pointer;
 }
-.hidden {
-  display: none;
+h1,
+h2,
+h3,
+p {
+  margin-left: 0;
 }
+
+.main-title {
+  font-size: 72px;
+  text-align: center;
+  /* color: sandybrown; */
+  font-weight: bold;
+  background-image: url(../images/elements-background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.main-descr {
+  font-size: 24px;
+  text-align: center;
+  color: bisque;
+}
+
+.js-generate-form {
+  display: flex;
+  flex-direction: column;
+  color: bisque;
+  font-size: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 16px;
+  width: 800px;
+  margin-top: 50px;
+}
+.generate-descr,
+.game-message-title {
+  color: peru;
+  font-size: 32px;
+  text-align: center;
+}
+.generate-form-label {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+.generate-form-btn,
+.game-message-btn {
+  display: block;
+  width: 280px;
+  height: 50px;
+  font-family: "Lora";
+  font-size: 24px;
+  font-weight: 800;
+  background: url(../images/elements-background.jpg);
+
+  margin-top: 32px;
+  color: rgb(111, 48, 20);
+  border-radius: 8px;
+  border: rgb(111, 48, 20) 2px solid;
+}
+.game-message-btn {
+  margin-left: auto;
+  margin-right: 50px;
+}
+.generate-form-btn {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Chessboard */
+
 .js-chessboard {
   display: grid;
   width: max-content;
   height: max-content;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 100px;
-  border: 10px solid sienna;
+  margin-top: 32px;
+  border: 10px solid rgb(111, 48, 20);
+  border-radius: 5px;
+}
+.hidden {
+  display: none;
+  pointer-events: none;
 }
 .cell {
   width: 100%;
